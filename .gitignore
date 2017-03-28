@@ -6,6 +6,7 @@
 .m2
 .ivy2
 .sbt
+.idea
 */experiments
 */node_modules
 *.o
@@ -34,6 +35,11 @@ clojure/mal.jar
 clojure/target
 clojure/.lein-repl-history
 coffee/mal.coffee
+cpp14/CMakeFiles
+cpp14/CMakeCache.txt
+cpp14/*.cmake
+cpp14/*.cbp
+cpp14/cmake-build-*
 cs/*.exe
 cs/*.dll
 cs/*.mdb
