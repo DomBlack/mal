@@ -1,4 +1,5 @@
 #include <linenoise/linenoise.hpp>
+#include <cassert>
 
 #include "readline.h"
 

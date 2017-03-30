@@ -1,6 +1,9 @@
 #include <string>
 #include <iostream>
+#include <sstream>
 
+#include "ast/types.h"
+#include "parser/parser.h"
 #include "util/readline.h"
 
 namespace mal {
@@ -11,8 +14,8 @@ namespace mal {
    *
    * @return The input unmodified
    */
-  std::string read(const std::string input) {
-    return input;
+  ParseResult read(const std::string input) {
+    return readString(input);
   }
 
   /**
@@ -22,7 +25,7 @@ namespace mal {
    *
    * @return The input unmodified
    */
-  std::string eval(const std::string input) {
+  ast::TypePtr eval(ast::TypePtr input) {
     return input;
   }
 
@@ -33,8 +36,12 @@ namespace mal {
    *
    * @return The output unmodified
    */
-  std::string print(const std::string output) {
-    return output;
+  std::string print(ast::TypePtr output) {
+    std::stringstream stream;
+
+    stream << output;
+
+    return stream.str();
   }
 
   /**
@@ -45,11 +52,18 @@ namespace mal {
    * @return The output
    */
   std::string rep(const std::string input) {
-    return print(eval(read(input)));
+    auto ast = read(input);
+
+    if (ast) {
+      return print(eval(ast.right));
+    } else {
+      return ast.left.error();
+    }
   }
 }
 
 int main() {
+
   // Create our line reader
   auto readLine = mal::ReadLine("user> ", "~/.mal-history");
 

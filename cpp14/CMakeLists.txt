@@ -28,6 +28,12 @@ include_directories(lib)
 set(LIBRARY_FILES lib/linenoise/linenoise.hpp)
 
 include_directories(src)
-set(SOURCE_FILES src/main.cpp src/util/readline.cpp src/util/readline.h)
+set(SOURCE_FILES
+        src/util/readline.cpp src/util/readline.h
+        src/parser/tokenizer.cpp src/parser/tokenizer.h
+        src/parser/parser.cpp src/parser/parser.h
+        src/ast/types.cpp src/ast/types.h
+        src/util/helpers.cpp src/util/helpers.h src/util/either.cpp src/util/either.h)
 
 add_executable(step0_repl ${SOURCE_FILES} ${LIBRARY_FILES} src/step0_repl.cpp)
+add_executable(step1_read_print ${SOURCE_FILES} ${LIBRARY_FILES} src/step1_read_print.cpp)
