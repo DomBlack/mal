@@ -27,7 +27,7 @@
 namespace mal {
   namespace ast {
     enum class NodeType {
-      Comment, Nil, Boolean, Integer, String, Symbol, Keyword, List, Vector, Map
+      InternalFunc, Comment, Nil, Boolean, Integer, String, Symbol, Keyword, List, Vector, Map
     };
 
     class Type {
@@ -42,6 +42,7 @@ namespace mal {
         virtual void toStream(std::ostream& stream) const = 0;
 
         std::string toString() const;
+        Token toDummyToken() const;
     };
 
     typedef std::shared_ptr<ast::Type> TypePtr;
@@ -51,7 +52,6 @@ namespace mal {
         const std::vector<TypePtr> items;
 
         List(const NodeType type, const Token token, const std::vector<TypePtr> items): Type(type, token), items(items) {};
-
 
         void toStream(std::ostream &stream) const override;
     };

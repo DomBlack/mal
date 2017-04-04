@@ -129,6 +129,9 @@ ParseResult Parser::readAtom() {
   } else if (isIntegerString(token.value)) {
     return buildAST(ast::Integer, std::atoi(token.value.c_str()));
 
+  } else if (token.value[0] == '-' && token.value.size() > 1 && isIntegerString(token.value.substr(1))) {
+    return buildAST(ast::Integer, -std::atoi(token.value.substr(1).c_str()));
+
   } else if (token.value[0] == ';') {
     return buildASTAtom(ast::Comment);
 

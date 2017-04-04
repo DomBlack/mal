@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named step2_eval
+
+# Build rule for target.
+step2_eval: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 step2_eval
+.PHONY : step2_eval
+
+# fast build rule for target.
+step2_eval/fast:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/build
+.PHONY : step2_eval/fast
+
+#=============================================================================
 # Target rules for targets named step1_read_print
 
 # Build rule for target.
@@ -136,12 +149,46 @@ step0_repl/fast:
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/build
 .PHONY : step0_repl/fast
 
+src/ast/internal.o: src/ast/internal.cpp.o
+
+.PHONY : src/ast/internal.o
+
+# target to build an object file
+src/ast/internal.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.o
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.o
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/internal.cpp.o
+.PHONY : src/ast/internal.cpp.o
+
+src/ast/internal.i: src/ast/internal.cpp.i
+
+.PHONY : src/ast/internal.i
+
+# target to preprocess a source file
+src/ast/internal.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.i
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.i
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/internal.cpp.i
+.PHONY : src/ast/internal.cpp.i
+
+src/ast/internal.s: src/ast/internal.cpp.s
+
+.PHONY : src/ast/internal.s
+
+# target to generate assembly for a file
+src/ast/internal.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.s
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.s
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/internal.cpp.s
+.PHONY : src/ast/internal.cpp.s
+
 src/ast/types.o: src/ast/types.cpp.o
 
 .PHONY : src/ast/types.o
 
 # target to build an object file
 src/ast/types.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/types.cpp.o
 .PHONY : src/ast/types.cpp.o
@@ -152,6 +199,7 @@ src/ast/types.i: src/ast/types.cpp.i
 
 # target to preprocess a source file
 src/ast/types.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/types.cpp.i
 .PHONY : src/ast/types.cpp.i
@@ -162,6 +210,7 @@ src/ast/types.s: src/ast/types.cpp.s
 
 # target to generate assembly for a file
 src/ast/types.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/types.cpp.s
 .PHONY : src/ast/types.cpp.s
@@ -172,6 +221,7 @@ src/parser/parser.o: src/parser/parser.cpp.o
 
 # target to build an object file
 src/parser/parser.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/parser.cpp.o
 .PHONY : src/parser/parser.cpp.o
@@ -182,6 +232,7 @@ src/parser/parser.i: src/parser/parser.cpp.i
 
 # target to preprocess a source file
 src/parser/parser.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/parser.cpp.i
 .PHONY : src/parser/parser.cpp.i
@@ -192,6 +243,7 @@ src/parser/parser.s: src/parser/parser.cpp.s
 
 # target to generate assembly for a file
 src/parser/parser.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/parser.cpp.s
 .PHONY : src/parser/parser.cpp.s
@@ -202,6 +254,7 @@ src/parser/tokenizer.o: src/parser/tokenizer.cpp.o
 
 # target to build an object file
 src/parser/tokenizer.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/tokenizer.cpp.o
 .PHONY : src/parser/tokenizer.cpp.o
@@ -212,6 +265,7 @@ src/parser/tokenizer.i: src/parser/tokenizer.cpp.i
 
 # target to preprocess a source file
 src/parser/tokenizer.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/tokenizer.cpp.i
 .PHONY : src/parser/tokenizer.cpp.i
@@ -222,6 +276,7 @@ src/parser/tokenizer.s: src/parser/tokenizer.cpp.s
 
 # target to generate assembly for a file
 src/parser/tokenizer.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/tokenizer.cpp.s
 .PHONY : src/parser/tokenizer.cpp.s
@@ -280,12 +335,40 @@ src/step1_read_print.cpp.s:
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/step1_read_print.cpp.s
 .PHONY : src/step1_read_print.cpp.s
 
+src/step2_eval.o: src/step2_eval.cpp.o
+
+.PHONY : src/step2_eval.o
+
+# target to build an object file
+src/step2_eval.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/step2_eval.cpp.o
+.PHONY : src/step2_eval.cpp.o
+
+src/step2_eval.i: src/step2_eval.cpp.i
+
+.PHONY : src/step2_eval.i
+
+# target to preprocess a source file
+src/step2_eval.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/step2_eval.cpp.i
+.PHONY : src/step2_eval.cpp.i
+
+src/step2_eval.s: src/step2_eval.cpp.s
+
+.PHONY : src/step2_eval.s
+
+# target to generate assembly for a file
+src/step2_eval.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/step2_eval.cpp.s
+.PHONY : src/step2_eval.cpp.s
+
 src/util/either.o: src/util/either.cpp.o
 
 .PHONY : src/util/either.o
 
 # target to build an object file
 src/util/either.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/either.cpp.o
 .PHONY : src/util/either.cpp.o
@@ -296,6 +379,7 @@ src/util/either.i: src/util/either.cpp.i
 
 # target to preprocess a source file
 src/util/either.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/either.cpp.i
 .PHONY : src/util/either.cpp.i
@@ -306,6 +390,7 @@ src/util/either.s: src/util/either.cpp.s
 
 # target to generate assembly for a file
 src/util/either.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/either.cpp.s
 .PHONY : src/util/either.cpp.s
@@ -316,6 +401,7 @@ src/util/helpers.o: src/util/helpers.cpp.o
 
 # target to build an object file
 src/util/helpers.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/helpers.cpp.o
 .PHONY : src/util/helpers.cpp.o
@@ -326,6 +412,7 @@ src/util/helpers.i: src/util/helpers.cpp.i
 
 # target to preprocess a source file
 src/util/helpers.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/helpers.cpp.i
 .PHONY : src/util/helpers.cpp.i
@@ -336,6 +423,7 @@ src/util/helpers.s: src/util/helpers.cpp.s
 
 # target to generate assembly for a file
 src/util/helpers.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/helpers.cpp.s
 .PHONY : src/util/helpers.cpp.s
@@ -346,6 +434,7 @@ src/util/readline.o: src/util/readline.cpp.o
 
 # target to build an object file
 src/util/readline.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/readline.cpp.o
 .PHONY : src/util/readline.cpp.o
@@ -356,6 +445,7 @@ src/util/readline.i: src/util/readline.cpp.i
 
 # target to preprocess a source file
 src/util/readline.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/readline.cpp.i
 .PHONY : src/util/readline.cpp.i
@@ -366,6 +456,7 @@ src/util/readline.s: src/util/readline.cpp.s
 
 # target to generate assembly for a file
 src/util/readline.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/readline.cpp.s
 .PHONY : src/util/readline.cpp.s
@@ -376,10 +467,14 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... step2_eval"
 	@echo "... step1_read_print"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... step0_repl"
+	@echo "... src/ast/internal.o"
+	@echo "... src/ast/internal.i"
+	@echo "... src/ast/internal.s"
 	@echo "... src/ast/types.o"
 	@echo "... src/ast/types.i"
 	@echo "... src/ast/types.s"
@@ -395,6 +490,9 @@ help:
 	@echo "... src/step1_read_print.o"
 	@echo "... src/step1_read_print.i"
 	@echo "... src/step1_read_print.s"
+	@echo "... src/step2_eval.o"
+	@echo "... src/step2_eval.i"
+	@echo "... src/step2_eval.s"
 	@echo "... src/util/either.o"
 	@echo "... src/util/either.i"
 	@echo "... src/util/either.s"

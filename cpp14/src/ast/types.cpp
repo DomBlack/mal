@@ -106,3 +106,7 @@ std::string ast::Type::toString() const {
 
   return stream.str();
 }
+
+Token ast::Type::toDummyToken() const {
+  return Token(line, position);
+}

@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <functional>
 
 namespace mal {
 
@@ -56,7 +57,60 @@ namespace mal {
         }
       };
 
+      Left<L>  asLeft()  const { return Left<L>(left); };
+      Right<R> asRight() const { return Right<R>(right); };
+
       ~Either() {};
+
+      /*
+       * Example Uses
+       *
+       * mal::Either<std::string, int> test1 = mal::Right<int>(123);
+       * mal::Either<std::string, int> test2 = mal::Right<int>(100);
+       *
+       * mal::Either<std::string, int> result = test1.flatMap<int>(
+       *     [&test2](int a) { return test2.map<int>([&a](int b) -> int { return a - b; }); }
+       * );
+       *
+       * auto zipTest = test1.zip(test2).map<int>([](std::tuple<int, int> t) { return std::get<0>(t) - std::get<1>(t); });
+       *
+       * std::cout << "flatMap: " << result.right << " zipTest: " << zipTest.right << std::endl;
+       */
+
+      /// Zips this either with another
+      template <typename B>
+      Either<L, std::tuple<R, B>> zip(const Either<L, B> &other) const {
+        if (_isRight) {
+          if (other._isRight) {
+            return Right<std::tuple<R, B>>(std::make_tuple(right, other.right));
+          } else {
+            return other.asLeft();
+          }
+        } else {
+          return this->asLeft();
+        }
+      };
+
+
+      /// Maps this either into the other type
+      template <typename B>
+      Either<L, B> map(std::function<B(const R &)> fn) const {
+        if (_isRight) {
+          return Right<B>(fn(right));
+        } else {
+          return this->asLeft();
+        }
+      };
+
+      /// Flatmaps this either with the other type
+      template <typename B>
+      Either<L, B> flatMap(std::function<Either<L, B>(const R &)> fn) const {
+        if (_isRight) {
+          return fn(right);
+        } else {
+          return this->asLeft();
+        }
+      };
 
       /// Returns true if this either is a right
       operator bool() const { return _isRight; }

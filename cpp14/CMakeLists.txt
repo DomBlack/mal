@@ -33,7 +33,11 @@ set(SOURCE_FILES
         src/parser/tokenizer.cpp src/parser/tokenizer.h
         src/parser/parser.cpp src/parser/parser.h
         src/ast/types.cpp src/ast/types.h
-        src/util/helpers.cpp src/util/helpers.h src/util/either.cpp src/util/either.h)
+        src/util/helpers.cpp src/util/helpers.h
+        src/util/either.cpp src/util/either.h
+        src/ast/internal.cpp src/ast/internal.h
+)
 
 add_executable(step0_repl ${SOURCE_FILES} ${LIBRARY_FILES} src/step0_repl.cpp)
 add_executable(step1_read_print ${SOURCE_FILES} ${LIBRARY_FILES} src/step1_read_print.cpp)
+add_executable(step2_eval ${SOURCE_FILES} ${LIBRARY_FILES} src/step2_eval.cpp)
