@@ -137,6 +137,19 @@ step1_read_print/fast:
 .PHONY : step1_read_print/fast
 
 #=============================================================================
+# Target rules for targets named step3_env
+
+# Build rule for target.
+step3_env: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 step3_env
+.PHONY : step3_env
+
+# fast build rule for target.
+step3_env/fast:
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/build
+.PHONY : step3_env/fast
+
+#=============================================================================
 # Target rules for targets named step0_repl
 
 # Build rule for target.
@@ -157,6 +170,7 @@ src/ast/internal.o: src/ast/internal.cpp.o
 src/ast/internal.cpp.o:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/internal.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/internal.cpp.o
 .PHONY : src/ast/internal.cpp.o
 
@@ -168,6 +182,7 @@ src/ast/internal.i: src/ast/internal.cpp.i
 src/ast/internal.cpp.i:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/internal.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/internal.cpp.i
 .PHONY : src/ast/internal.cpp.i
 
@@ -179,6 +194,7 @@ src/ast/internal.s: src/ast/internal.cpp.s
 src/ast/internal.cpp.s:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/internal.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/internal.cpp.s
 .PHONY : src/ast/internal.cpp.s
 
@@ -190,6 +206,7 @@ src/ast/types.o: src/ast/types.cpp.o
 src/ast/types.cpp.o:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/types.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/types.cpp.o
 .PHONY : src/ast/types.cpp.o
 
@@ -201,6 +218,7 @@ src/ast/types.i: src/ast/types.cpp.i
 src/ast/types.cpp.i:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/types.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/types.cpp.i
 .PHONY : src/ast/types.cpp.i
 
@@ -212,6 +230,7 @@ src/ast/types.s: src/ast/types.cpp.s
 src/ast/types.cpp.s:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/types.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/types.cpp.s
 .PHONY : src/ast/types.cpp.s
 
@@ -223,6 +242,7 @@ src/parser/parser.o: src/parser/parser.cpp.o
 src/parser/parser.cpp.o:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/parser/parser.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/parser.cpp.o
 .PHONY : src/parser/parser.cpp.o
 
@@ -234,6 +254,7 @@ src/parser/parser.i: src/parser/parser.cpp.i
 src/parser/parser.cpp.i:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/parser/parser.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/parser.cpp.i
 .PHONY : src/parser/parser.cpp.i
 
@@ -245,6 +266,7 @@ src/parser/parser.s: src/parser/parser.cpp.s
 src/parser/parser.cpp.s:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/parser/parser.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/parser.cpp.s
 .PHONY : src/parser/parser.cpp.s
 
@@ -256,6 +278,7 @@ src/parser/tokenizer.o: src/parser/tokenizer.cpp.o
 src/parser/tokenizer.cpp.o:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/parser/tokenizer.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/tokenizer.cpp.o
 .PHONY : src/parser/tokenizer.cpp.o
 
@@ -267,6 +290,7 @@ src/parser/tokenizer.i: src/parser/tokenizer.cpp.i
 src/parser/tokenizer.cpp.i:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/parser/tokenizer.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/tokenizer.cpp.i
 .PHONY : src/parser/tokenizer.cpp.i
 
@@ -278,8 +302,45 @@ src/parser/tokenizer.s: src/parser/tokenizer.cpp.s
 src/parser/tokenizer.cpp.s:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/parser/tokenizer.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/parser/tokenizer.cpp.s
 .PHONY : src/parser/tokenizer.cpp.s
+
+src/runtime/environment.o: src/runtime/environment.cpp.o
+
+.PHONY : src/runtime/environment.o
+
+# target to build an object file
+src/runtime/environment.cpp.o:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/environment.cpp.o
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/environment.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/runtime/environment.cpp.o
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/runtime/environment.cpp.o
+.PHONY : src/runtime/environment.cpp.o
+
+src/runtime/environment.i: src/runtime/environment.cpp.i
+
+.PHONY : src/runtime/environment.i
+
+# target to preprocess a source file
+src/runtime/environment.cpp.i:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/environment.cpp.i
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/environment.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/runtime/environment.cpp.i
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/runtime/environment.cpp.i
+.PHONY : src/runtime/environment.cpp.i
+
+src/runtime/environment.s: src/runtime/environment.cpp.s
+
+.PHONY : src/runtime/environment.s
+
+# target to generate assembly for a file
+src/runtime/environment.cpp.s:
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/environment.cpp.s
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/environment.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/runtime/environment.cpp.s
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/runtime/environment.cpp.s
+.PHONY : src/runtime/environment.cpp.s
 
 src/step0_repl.o: src/step0_repl.cpp.o
 
@@ -362,6 +423,33 @@ src/step2_eval.cpp.s:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/step2_eval.cpp.s
 .PHONY : src/step2_eval.cpp.s
 
+src/step3_env.o: src/step3_env.cpp.o
+
+.PHONY : src/step3_env.o
+
+# target to build an object file
+src/step3_env.cpp.o:
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/step3_env.cpp.o
+.PHONY : src/step3_env.cpp.o
+
+src/step3_env.i: src/step3_env.cpp.i
+
+.PHONY : src/step3_env.i
+
+# target to preprocess a source file
+src/step3_env.cpp.i:
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/step3_env.cpp.i
+.PHONY : src/step3_env.cpp.i
+
+src/step3_env.s: src/step3_env.cpp.s
+
+.PHONY : src/step3_env.s
+
+# target to generate assembly for a file
+src/step3_env.cpp.s:
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/step3_env.cpp.s
+.PHONY : src/step3_env.cpp.s
+
 src/util/either.o: src/util/either.cpp.o
 
 .PHONY : src/util/either.o
@@ -370,6 +458,7 @@ src/util/either.o: src/util/either.cpp.o
 src/util/either.cpp.o:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/either.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/either.cpp.o
 .PHONY : src/util/either.cpp.o
 
@@ -381,6 +470,7 @@ src/util/either.i: src/util/either.cpp.i
 src/util/either.cpp.i:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/either.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/either.cpp.i
 .PHONY : src/util/either.cpp.i
 
@@ -392,6 +482,7 @@ src/util/either.s: src/util/either.cpp.s
 src/util/either.cpp.s:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/either.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/either.cpp.s
 .PHONY : src/util/either.cpp.s
 
@@ -403,6 +494,7 @@ src/util/helpers.o: src/util/helpers.cpp.o
 src/util/helpers.cpp.o:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/helpers.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/helpers.cpp.o
 .PHONY : src/util/helpers.cpp.o
 
@@ -414,6 +506,7 @@ src/util/helpers.i: src/util/helpers.cpp.i
 src/util/helpers.cpp.i:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/helpers.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/helpers.cpp.i
 .PHONY : src/util/helpers.cpp.i
 
@@ -425,6 +518,7 @@ src/util/helpers.s: src/util/helpers.cpp.s
 src/util/helpers.cpp.s:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/helpers.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/helpers.cpp.s
 .PHONY : src/util/helpers.cpp.s
 
@@ -436,6 +530,7 @@ src/util/readline.o: src/util/readline.cpp.o
 src/util/readline.cpp.o:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/readline.cpp.o
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/readline.cpp.o
 .PHONY : src/util/readline.cpp.o
 
@@ -447,6 +542,7 @@ src/util/readline.i: src/util/readline.cpp.i
 src/util/readline.cpp.i:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/readline.cpp.i
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/readline.cpp.i
 .PHONY : src/util/readline.cpp.i
 
@@ -458,6 +554,7 @@ src/util/readline.s: src/util/readline.cpp.s
 src/util/readline.cpp.s:
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/util/readline.cpp.s
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/util/readline.cpp.s
 .PHONY : src/util/readline.cpp.s
 
@@ -467,10 +564,11 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... rebuild_cache"
 	@echo "... step2_eval"
 	@echo "... step1_read_print"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... step3_env"
 	@echo "... step0_repl"
 	@echo "... src/ast/internal.o"
 	@echo "... src/ast/internal.i"
@@ -484,6 +582,9 @@ help:
 	@echo "... src/parser/tokenizer.o"
 	@echo "... src/parser/tokenizer.i"
 	@echo "... src/parser/tokenizer.s"
+	@echo "... src/runtime/environment.o"
+	@echo "... src/runtime/environment.i"
+	@echo "... src/runtime/environment.s"
 	@echo "... src/step0_repl.o"
 	@echo "... src/step0_repl.i"
 	@echo "... src/step0_repl.s"
@@ -493,6 +594,9 @@ help:
 	@echo "... src/step2_eval.o"
 	@echo "... src/step2_eval.i"
 	@echo "... src/step2_eval.s"
+	@echo "... src/step3_env.o"
+	@echo "... src/step3_env.i"
+	@echo "... src/step3_env.s"
 	@echo "... src/util/either.o"
 	@echo "... src/util/either.i"
 	@echo "... src/util/either.s"
