@@ -25,6 +25,9 @@
 }
 
 namespace mal {
+  /// iword variable for streams to print nodes raw
+  extern const int printStringNodesRaw;
+
   namespace ast {
     enum class NodeType {
       InternalFunc, Comment, Nil, Boolean, Integer, String, Symbol, Keyword, List, Vector, Map

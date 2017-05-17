@@ -28,14 +28,9 @@ namespace mal {
 
         FuncLambda func;
 
-        InternalFunc(const std::string name, const FuncLambda func): ast::Type(ast::NodeType::InternalFunc, Token(0, 0)), name(name), func(func) {};
+        InternalFunc(const std::string name, const FuncLambda func, const Token token): ast::Type(ast::NodeType::InternalFunc, token), name(name), func(func) {};
 
         void toStream(std::ostream &stream) const override;
     };
-
-    extern ast::TypePtr addFunc;
-    extern ast::TypePtr subFunc;
-    extern ast::TypePtr mulFunc;
-    extern ast::TypePtr divFunc;
   }
 }

@@ -199,6 +199,12 @@ ParseResult Parser::readWithMetaData() {
 const std::string ParseError::error() const {
   std::stringstream stream;
 
+  // If it's on the first line, we're in repl mode, put a pointer at the correct place
+  if (line == 1) {
+    stream << std::string(5 + position, ' ') << "^" << std::endl;
+  }
+
+  // Then print the error
   stream << _error << " at " << line << ":" << position;
 
   return stream.str();

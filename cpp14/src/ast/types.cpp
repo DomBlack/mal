@@ -4,6 +4,8 @@
 
 using namespace mal;
 
+const int mal::printStringNodesRaw = std::ios_base::xalloc();
+
 std::ostream &operator<< (std::ostream &os, mal::ast::TypePtr const m) {
   m->toStream(os);
   return os;
@@ -88,7 +90,11 @@ void ast::Integer::toStream(std::ostream &stream) const {
 }
 
 void ast::String::toStream(std::ostream &stream) const {
-  stream << "\"" << replaceSubstr(replaceSubstr(replaceSubstr(value,  "\\", "\\\\"), "\"", "\\\""), "\n", "\\n") << "\"";
+  if (stream.iword(printStringNodesRaw) == 1) {
+    stream << value;
+  } else {
+    stream << "\"" << replaceSubstr(replaceSubstr(replaceSubstr(value, "\\", "\\\\"), "\"", "\\\""), "\n", "\\n") << "\"";
+  }
 }
 
 void ast::Symbol::toStream(std::ostream &stream) const {

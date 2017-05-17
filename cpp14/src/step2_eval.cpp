@@ -2,6 +2,8 @@
 #include <iostream>
 #include <sstream>
 #include <unordered_map>
+#include <runtime/helpers.h>
+#include <runtime/core.h>
 
 #include "ast/types.h"
 #include "parser/parser.h"
@@ -11,11 +13,13 @@
 namespace mal {
   typedef std::unordered_map<std::string, ast::TypePtr> ReplEnv;
 
+#define CORE_FUNC(name) { name, LAMBDA_AS_AST_NODE(name, mal::runtime::ns.at(name), Token(0, 0)) }
+
   ReplEnv baseReplEnv = {
-      { "+", mal::internal::addFunc },
-      { "-", mal::internal::subFunc },
-      { "*", mal::internal::mulFunc },
-      { "/", mal::internal::divFunc }
+      CORE_FUNC("+"),
+      CORE_FUNC("-"),
+      CORE_FUNC("*"),
+      CORE_FUNC("/")
   };
 
   /**
