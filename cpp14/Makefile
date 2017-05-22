@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named step5_tco
+
+# Build rule for target.
+step5_tco: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 step5_tco
+.PHONY : step5_tco
+
+# fast build rule for target.
+step5_tco/fast:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/build
+.PHONY : step5_tco/fast
+
+#=============================================================================
 # Target rules for targets named step4_if_fn_do
 
 # Build rule for target.
@@ -181,6 +194,7 @@ src/ast/internal.o: src/ast/internal.cpp.o
 
 # target to build an object file
 src/ast/internal.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/internal.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/internal.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.o
@@ -194,6 +208,7 @@ src/ast/internal.i: src/ast/internal.cpp.i
 
 # target to preprocess a source file
 src/ast/internal.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/internal.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/internal.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.i
@@ -207,6 +222,7 @@ src/ast/internal.s: src/ast/internal.cpp.s
 
 # target to generate assembly for a file
 src/ast/internal.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/internal.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/internal.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/internal.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/internal.cpp.s
@@ -220,6 +236,7 @@ src/ast/types.o: src/ast/types.cpp.o
 
 # target to build an object file
 src/ast/types.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/types.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/types.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.o
@@ -233,6 +250,7 @@ src/ast/types.i: src/ast/types.cpp.i
 
 # target to preprocess a source file
 src/ast/types.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/types.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/types.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.i
@@ -246,6 +264,7 @@ src/ast/types.s: src/ast/types.cpp.s
 
 # target to generate assembly for a file
 src/ast/types.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/types.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/types.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/types.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/types.cpp.s
@@ -253,12 +272,55 @@ src/ast/types.cpp.s:
 	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/types.cpp.s
 .PHONY : src/ast/types.cpp.s
 
+src/ast/userFunc.o: src/ast/userFunc.cpp.o
+
+.PHONY : src/ast/userFunc.o
+
+# target to build an object file
+src/ast/userFunc.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/userFunc.cpp.o
+	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/userFunc.cpp.o
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/userFunc.cpp.o
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/userFunc.cpp.o
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/userFunc.cpp.o
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/userFunc.cpp.o
+.PHONY : src/ast/userFunc.cpp.o
+
+src/ast/userFunc.i: src/ast/userFunc.cpp.i
+
+.PHONY : src/ast/userFunc.i
+
+# target to preprocess a source file
+src/ast/userFunc.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/userFunc.cpp.i
+	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/userFunc.cpp.i
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/userFunc.cpp.i
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/userFunc.cpp.i
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/userFunc.cpp.i
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/userFunc.cpp.i
+.PHONY : src/ast/userFunc.cpp.i
+
+src/ast/userFunc.s: src/ast/userFunc.cpp.s
+
+.PHONY : src/ast/userFunc.s
+
+# target to generate assembly for a file
+src/ast/userFunc.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/ast/userFunc.cpp.s
+	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/ast/userFunc.cpp.s
+	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/ast/userFunc.cpp.s
+	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/ast/userFunc.cpp.s
+	$(MAKE) -f CMakeFiles/step3_env.dir/build.make CMakeFiles/step3_env.dir/src/ast/userFunc.cpp.s
+	$(MAKE) -f CMakeFiles/step0_repl.dir/build.make CMakeFiles/step0_repl.dir/src/ast/userFunc.cpp.s
+.PHONY : src/ast/userFunc.cpp.s
+
 src/parser/parser.o: src/parser/parser.cpp.o
 
 .PHONY : src/parser/parser.o
 
 # target to build an object file
 src/parser/parser.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/parser/parser.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/parser/parser.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.o
@@ -272,6 +334,7 @@ src/parser/parser.i: src/parser/parser.cpp.i
 
 # target to preprocess a source file
 src/parser/parser.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/parser/parser.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/parser/parser.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.i
@@ -285,6 +348,7 @@ src/parser/parser.s: src/parser/parser.cpp.s
 
 # target to generate assembly for a file
 src/parser/parser.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/parser/parser.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/parser/parser.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/parser.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/parser.cpp.s
@@ -298,6 +362,7 @@ src/parser/tokenizer.o: src/parser/tokenizer.cpp.o
 
 # target to build an object file
 src/parser/tokenizer.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/parser/tokenizer.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/parser/tokenizer.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.o
@@ -311,6 +376,7 @@ src/parser/tokenizer.i: src/parser/tokenizer.cpp.i
 
 # target to preprocess a source file
 src/parser/tokenizer.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/parser/tokenizer.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/parser/tokenizer.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.i
@@ -324,6 +390,7 @@ src/parser/tokenizer.s: src/parser/tokenizer.cpp.s
 
 # target to generate assembly for a file
 src/parser/tokenizer.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/parser/tokenizer.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/parser/tokenizer.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/parser/tokenizer.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/parser/tokenizer.cpp.s
@@ -337,6 +404,7 @@ src/runtime/core.o: src/runtime/core.cpp.o
 
 # target to build an object file
 src/runtime/core.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/runtime/core.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/runtime/core.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/core.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/core.cpp.o
@@ -350,6 +418,7 @@ src/runtime/core.i: src/runtime/core.cpp.i
 
 # target to preprocess a source file
 src/runtime/core.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/runtime/core.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/runtime/core.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/core.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/core.cpp.i
@@ -363,6 +432,7 @@ src/runtime/core.s: src/runtime/core.cpp.s
 
 # target to generate assembly for a file
 src/runtime/core.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/runtime/core.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/runtime/core.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/core.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/core.cpp.s
@@ -376,6 +446,7 @@ src/runtime/environment.o: src/runtime/environment.cpp.o
 
 # target to build an object file
 src/runtime/environment.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/runtime/environment.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/runtime/environment.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/environment.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/environment.cpp.o
@@ -389,6 +460,7 @@ src/runtime/environment.i: src/runtime/environment.cpp.i
 
 # target to preprocess a source file
 src/runtime/environment.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/runtime/environment.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/runtime/environment.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/environment.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/environment.cpp.i
@@ -402,6 +474,7 @@ src/runtime/environment.s: src/runtime/environment.cpp.s
 
 # target to generate assembly for a file
 src/runtime/environment.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/runtime/environment.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/runtime/environment.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/runtime/environment.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/runtime/environment.cpp.s
@@ -544,12 +617,40 @@ src/step4_if_fn_do.cpp.s:
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/step4_if_fn_do.cpp.s
 .PHONY : src/step4_if_fn_do.cpp.s
 
+src/step5_tco.o: src/step5_tco.cpp.o
+
+.PHONY : src/step5_tco.o
+
+# target to build an object file
+src/step5_tco.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/step5_tco.cpp.o
+.PHONY : src/step5_tco.cpp.o
+
+src/step5_tco.i: src/step5_tco.cpp.i
+
+.PHONY : src/step5_tco.i
+
+# target to preprocess a source file
+src/step5_tco.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/step5_tco.cpp.i
+.PHONY : src/step5_tco.cpp.i
+
+src/step5_tco.s: src/step5_tco.cpp.s
+
+.PHONY : src/step5_tco.s
+
+# target to generate assembly for a file
+src/step5_tco.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/step5_tco.cpp.s
+.PHONY : src/step5_tco.cpp.s
+
 src/util/either.o: src/util/either.cpp.o
 
 .PHONY : src/util/either.o
 
 # target to build an object file
 src/util/either.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/either.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/either.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.o
@@ -563,6 +664,7 @@ src/util/either.i: src/util/either.cpp.i
 
 # target to preprocess a source file
 src/util/either.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/either.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/either.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.i
@@ -576,6 +678,7 @@ src/util/either.s: src/util/either.cpp.s
 
 # target to generate assembly for a file
 src/util/either.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/either.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/either.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/either.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/either.cpp.s
@@ -589,6 +692,7 @@ src/util/helpers.o: src/util/helpers.cpp.o
 
 # target to build an object file
 src/util/helpers.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/helpers.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/helpers.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.o
@@ -602,6 +706,7 @@ src/util/helpers.i: src/util/helpers.cpp.i
 
 # target to preprocess a source file
 src/util/helpers.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/helpers.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/helpers.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.i
@@ -615,6 +720,7 @@ src/util/helpers.s: src/util/helpers.cpp.s
 
 # target to generate assembly for a file
 src/util/helpers.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/helpers.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/helpers.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/helpers.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/helpers.cpp.s
@@ -628,6 +734,7 @@ src/util/readline.o: src/util/readline.cpp.o
 
 # target to build an object file
 src/util/readline.cpp.o:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/readline.cpp.o
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/readline.cpp.o
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.o
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.o
@@ -641,6 +748,7 @@ src/util/readline.i: src/util/readline.cpp.i
 
 # target to preprocess a source file
 src/util/readline.cpp.i:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/readline.cpp.i
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/readline.cpp.i
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.i
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.i
@@ -654,6 +762,7 @@ src/util/readline.s: src/util/readline.cpp.s
 
 # target to generate assembly for a file
 src/util/readline.cpp.s:
+	$(MAKE) -f CMakeFiles/step5_tco.dir/build.make CMakeFiles/step5_tco.dir/src/util/readline.cpp.s
 	$(MAKE) -f CMakeFiles/step4_if_fn_do.dir/build.make CMakeFiles/step4_if_fn_do.dir/src/util/readline.cpp.s
 	$(MAKE) -f CMakeFiles/step2_eval.dir/build.make CMakeFiles/step2_eval.dir/src/util/readline.cpp.s
 	$(MAKE) -f CMakeFiles/step1_read_print.dir/build.make CMakeFiles/step1_read_print.dir/src/util/readline.cpp.s
@@ -669,6 +778,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... step5_tco"
 	@echo "... step4_if_fn_do"
 	@echo "... step2_eval"
 	@echo "... step1_read_print"
@@ -680,6 +790,9 @@ help:
 	@echo "... src/ast/types.o"
 	@echo "... src/ast/types.i"
 	@echo "... src/ast/types.s"
+	@echo "... src/ast/userFunc.o"
+	@echo "... src/ast/userFunc.i"
+	@echo "... src/ast/userFunc.s"
 	@echo "... src/parser/parser.o"
 	@echo "... src/parser/parser.i"
 	@echo "... src/parser/parser.s"
@@ -707,6 +820,9 @@ help:
 	@echo "... src/step4_if_fn_do.o"
 	@echo "... src/step4_if_fn_do.i"
 	@echo "... src/step4_if_fn_do.s"
+	@echo "... src/step5_tco.o"
+	@echo "... src/step5_tco.i"
+	@echo "... src/step5_tco.s"
 	@echo "... src/util/either.o"
 	@echo "... src/util/either.i"
 	@echo "... src/util/either.s"

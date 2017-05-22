@@ -30,7 +30,7 @@ namespace mal {
 
   namespace ast {
     enum class NodeType {
-      InternalFunc, Comment, Nil, Boolean, Integer, String, Symbol, Keyword, List, Vector, Map
+      InternalFunc, UserFunc, Comment, Nil, Boolean, Integer, String, Symbol, Keyword, List, Vector, Map
     };
 
     class Type {
