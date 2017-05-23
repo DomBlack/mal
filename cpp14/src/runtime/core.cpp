@@ -2,9 +2,12 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <streambuf>
 #include <sstream>
 
 #include "helpers.h"
+#include "ast/atom.h"
 
 using namespace mal;
 
@@ -116,6 +119,8 @@ bool compare(const ast::TypePtr a, const ast::TypePtr b) {
       return compare_primitive<ast::Keyword>(a, b);
 
     case ast::NodeType::InternalFunc:
+    case ast::NodeType::UserFunc:
+    case ast::NodeType::Atom:
       return a == b;
   }
 
@@ -205,4 +210,68 @@ const std::unordered_map<std::string, internal::FuncLambda> runtime::ns = {
     NS_FUNC("str",     { RTN_NODE(String, pr_str(arguments, false, "")); }),
     NS_FUNC("prn",     { std::cout << pr_str(arguments, true, " ") << std::endl; RTN_NIL(); }),
     NS_FUNC("println", { std::cout << pr_str(arguments, false, " ") << std::endl; RTN_NIL(); }),
+    NS_FUNC(
+        "read-string",
+        {
+          ARG_COUNT(1);
+          ARG_CAST(input, 1, String);
+
+          return readString(input->value);
+        }
+    ),
+    NS_FUNC(
+      "slurp",
+      {
+        ARG_COUNT(1);
+        ARG_CAST(fileName, 1, String);
+
+        std::ifstream file(fileName->value.c_str());
+        if (!file.is_open()) {
+          RTN_ERROR("Unable to open \"" + fileName->value + "\"");
+        }
+
+        std::string str((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+
+        RTN_NODE(String, str);
+      }
+    ),
+
+
+    NS_FUNC(
+      "atom",
+      {
+        ARG_COUNT(1);
+        RTN_NODE(Atom, arguments.front());
+      }
+    ),
+
+    NS_FUNC(
+      "atom?",
+      {
+        ARG_COUNT(1);
+        RTN_NODE(Boolean, arguments.front()->type == ast::NodeType::Atom);
+      }
+    ),
+
+    NS_FUNC(
+        "deref",
+        {
+          ARG_COUNT(1);
+          ARG_CAST(atom, 1, Atom);
+          RTN_VALUE(atom->value);
+        }
+    ),
+
+    NS_FUNC(
+        "reset!",
+        {
+          ARG_COUNT(2);
+          ARG_CAST(atom, 1, Atom);
+
+          // Replace the value
+          atom->value = arguments[1];
+
+          RTN_VALUE(arguments[1]);
+        }
+    ),
 };

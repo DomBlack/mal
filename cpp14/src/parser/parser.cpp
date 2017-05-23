@@ -66,7 +66,9 @@ ParseResult Parser::readList(const ast::NodeType type) {
     auto result = this->readForm();
 
     if (result) {
-      items.push_back(result.right);
+      if (result.right->type != ast::NodeType::Comment) {
+        items.push_back(result.right);
+      }
     } else {
       return result;
     }

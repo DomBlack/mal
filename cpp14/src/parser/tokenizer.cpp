@@ -106,6 +106,11 @@ mal::Token mal::Tokenizer::next() {
 
         while (this->nextChar(character)) {
           str += character;
+
+          // If we get to a end of line, stop the comment
+          if (character == '\n') {
+            break;
+          }
         }
 
         this->nextToken = Token(str, startingLine, startingPos);

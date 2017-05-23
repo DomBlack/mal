@@ -20,17 +20,17 @@
     rtnErrorAt(node, "Expected argument " #name " to be a " #T); \
   }
 
-#define ARG_EVAL(name, index, env) const auto name_result = eval(arguments.at(index - 1), env); \
-  if (!name_result) { \
-    return name_result.asLeft(); \
+#define ARG_EVAL(name, index, env) const auto result_##name = eval(arguments.at(index - 1), env); \
+  if (!result_##name) { \
+    return result_##name.asLeft(); \
   } \
-  const auto name = name_result.right;
+  const auto name = result_##name.right;
 
-#define EVAL_NODE(name, node, env) const auto name_result = eval(node, env); \
-  if (!name_result) { \
-    return name_result.asLeft(); \
+#define EVAL_NODE(name, node, env) const auto result_##name = eval(node, env); \
+  if (!result_##name) { \
+    return result_##name.asLeft(); \
   } \
-  const auto name = name_result.right;
+  const auto name = result_##name.right;
 
 /// Defines a given lambda as an AST node
 #define LAMBDA_AS_AST_NODE(name, lambda, token) std::make_shared<mal::internal::InternalFunc>(name, lambda, token)
