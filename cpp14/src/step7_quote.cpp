@@ -26,7 +26,7 @@ namespace mal {
   }
 
   /// Is the given type a special?
-  bool isSpecial(const ast::TypePtr input, const std::string specialName) {
+  bool isSymbol(const ast::TypePtr input, const std::string specialName) {
     if (input->type == ast::NodeType::Symbol) {
       return std::static_pointer_cast<ast::Symbol>(input)->value == specialName;
     } else {
@@ -166,6 +166,96 @@ namespace mal {
   });
 
   /**
+   * Helper function
+   *
+   * @param ast An AST
+   *
+   * @return If that AST is a non empty list or vector
+   */
+  bool isPair(const ast::TypePtr ast) {
+    if (ast->type == ast::NodeType::List || ast->type == ast::NodeType::Vector) {
+      const auto list = std::static_pointer_cast<ast::List>(ast);
+
+      return !list->items.empty();
+    }
+
+    return false;
+  }
+
+  ast::TypePtr listWithoutHead(const Token callsite, const std::vector<ast::TypePtr> list) {
+    std::vector<ast::TypePtr> newList;
+
+    for (std::size_t i = 1; i < list.size(); i++) {
+      newList.push_back(list[i]);
+    }
+
+    return std::make_shared<ast::List>(ast::NodeType::List, callsite, newList);
+  }
+
+  EvalResult quasiquote(const Token callsite, const ast::TypePtr ast) {
+    if (!isPair(ast)) {
+      std::vector<ast::TypePtr> quasiquoteList =
+          { std::make_shared<ast::Symbol>(callsite, "quote"), ast };
+
+      RTN_VALUE(
+          std::make_shared<ast::List>(ast::NodeType::List, callsite, quasiquoteList)
+      );
+    }
+
+    // It has to be a populated list now, because isPair returns false or empty lists or non-lists
+    const auto list = std::static_pointer_cast<ast::List>(ast);
+    const auto head = list->items.front();
+
+    if (isSymbol(head, "unquote")) {
+      if (list->items.size() != 2) {
+        RTN_ERROR("unquote expects 1 argument");
+      }
+
+      RTN_VALUE(list->items[1]);
+    } else if (
+        isPair(head) &&
+        isSymbol(std::static_pointer_cast<ast::List>(head)->items.front(), "splice-unquote")
+    ) {
+      const auto headList = std::static_pointer_cast<ast::List>(head)->items;
+
+      if (headList.size() < 2) {
+        rtnErrorAt(head->toDummyToken(), "splice-unquote requires 2 arguments");
+      }
+
+      const auto result = quasiquote(callsite, listWithoutHead(callsite, list->items));
+
+      if (!result) {
+        return result;
+      }
+
+      std::vector<ast::TypePtr> quasiquoteList =
+          { std::make_shared<ast::Symbol>(callsite, "concat"), headList[1], result.right };
+
+      RTN_VALUE(
+          std::make_shared<ast::List>(ast::NodeType::List, callsite, quasiquoteList)
+      );
+    } else {
+      const auto result = quasiquote(callsite, listWithoutHead(callsite, list->items));
+
+      if (!result) {
+        return result;
+      }
+
+      const auto headResult = quasiquote(callsite, head);
+
+      if (!headResult) {
+        return headResult;
+      }
+
+      std::vector<ast::TypePtr> quasiquoteList = { std::make_shared<ast::Symbol>(callsite, "cons"), headResult.right, result.right };
+
+      RTN_VALUE(
+          std::make_shared<ast::List>(ast::NodeType::List, callsite, quasiquoteList)
+      );
+    }
+  }
+
+  /**
    * Evaluates the input
    *
    * @param input The input to read
@@ -180,24 +270,45 @@ namespace mal {
         if (params.empty()) {
           RTN_VALUE(input);
 
-        } else if (isSpecial(params.front(), "def!")) {
+        } else if (isSymbol(params.front(), "quote")) {
+          if (params.size() != 2) {
+            rtnErrorAt(input, "quote expects 1 argument, got " + std::to_string(params.size() - 1));
+          }
+
+          RTN_VALUE(params.back());
+
+        } else if (isSymbol(params.front(), "quasiquote")) {
+          if (params.size() != 2) {
+            rtnErrorAt(input, "quasiquote expects 1 argument, got " + std::to_string(params.size() - 1));
+          }
+
+          // TCO quasiquote
+          const auto qqResult = quasiquote(input->toDummyToken(), params.back());
+
+          if (!qqResult) {
+            return qqResult;
+          }
+
+          input = qqResult.right;
+
+        } else if (isSymbol(params.front(), "def!")) {
           return def(input, std::vector<ast::TypePtr>(params.begin() + 1, params.end()), env);
 
-        } else if (isSpecial(params.front(), "let*")) {
+        } else if (isSymbol(params.front(), "let*")) {
           const auto arguments = std::vector<ast::TypePtr>(params.begin() + 1, params.end() - 1);
           if (arguments.size() != 2) {
             rtnErrorAt(input, "let* expects 2 arguments, got " + std::to_string(arguments.size()));
           }
 
           if (arguments.front()->type != ast::NodeType::List && arguments.front()->type != ast::NodeType::Vector) {
-            rtnErrorAt(arguments.front(), "Expected argument 0 to be a List or Vector");
+            rtnErrorAt(arguments.front(), "let* expecteds argument 0 to be a List or Vector for");
           }
 
           const auto list = std::static_pointer_cast<ast::List>(arguments.front())->items;
 
           const unsigned long size = list.size();
           if (size % 2 == 1) {
-            rtnErrorAt(arguments.front(), "Expected an even number of binding parameters");
+            rtnErrorAt(arguments.front(), "let* expects an even number of binding parameters");
           }
 
           env = runtime::Environment::create(env);
@@ -213,10 +324,10 @@ namespace mal {
           // Execute the second argument
           input = arguments.back();
 
-        } else if (isSpecial(params.front(), "fn*")) {
+        } else if (isSymbol(params.front(), "fn*")) {
           return fn(input, std::vector<ast::TypePtr>(params.begin() + 1, params.end()), env);
 
-        } else if (isSpecial(params.front(), "if")) {
+        } else if (isSymbol(params.front(), "if")) {
           const auto arguments = std::vector<ast::TypePtr>(params.begin() + 1, params.end());
 
           // If can be two or three arguments
@@ -249,7 +360,7 @@ namespace mal {
             input = arguments.at(1);  // TCO
           }
 
-        } else if (isSpecial(params.front(), "do")) {
+        } else if (isSymbol(params.front(), "do")) {
           if (params.size() == 0) {
             rtnErrorAt(input, "Nothing passed into do for it to do!");
           }
@@ -264,7 +375,7 @@ namespace mal {
 
           input = params.back(); // TCO
 
-        } else if (isSpecial(params.front(), "swap!")) {
+        } else if (isSymbol(params.front(), "swap!")) {
           if (params.size() < 2) {
             rtnErrorAt(input, "swap! expects at least 2 arguments");
           }

@@ -12,12 +12,17 @@
 
 #define ARG_CAST_TO_LIST(name, index) std::shared_ptr<ast::List> name = (arguments[index - 1]->type == ast::NodeType::List || arguments[index - 1]->type == ast::NodeType::Vector) ? std::static_pointer_cast<ast::List>(arguments[index - 1]) : nullptr; \
   if (!name) { \
-    rtnErrorAt(arguments[index - 1], "Expected argument " #index " to be a list or vector"); \
+    rtnErrorAt(arguments[index - 1], "Expected argument " #index " to be a list or vector in " + funcName); \
   }
 
 #define CAST_NODE(name, node, T) std::shared_ptr<ast::T> name = (node->type == ast::NodeType::T) ? std::static_pointer_cast<ast::T>(node) : nullptr; \
   if (!name) { \
     rtnErrorAt(node, "Expected argument " #name " to be a " #T); \
+  }
+
+#define CAST_AS_LIST(name, node) std::shared_ptr<ast::List> name = (node->type == ast::NodeType::List || node->type == ast::NodeType::Vector) ? std::static_pointer_cast<ast::List>(node) : nullptr; \
+  if (!name) { \
+    rtnErrorAt(node, "Expected argument " #name " to be a list or vector in  " + funcName); \
   }
 
 #define ARG_EVAL(name, index, env) const auto result_##name = eval(arguments.at(index - 1), env); \

@@ -274,4 +274,41 @@ const std::unordered_map<std::string, internal::FuncLambda> runtime::ns = {
           RTN_VALUE(arguments[1]);
         }
     ),
+
+    NS_FUNC(
+      "cons",
+      {
+        ARG_COUNT(2);
+        ARG_CAST_TO_LIST(list, 2);
+
+        auto copy = list->copyOfItems();
+
+        copy.insert(copy.begin(), arguments[0]);
+
+        RTN_VALUE(
+            std::make_shared<ast::List>(ast::NodeType::List, callsite->toDummyToken(), copy)
+        );
+      }
+    ),
+
+    NS_FUNC(
+      "concat",
+      {
+        std::vector<ast::TypePtr> newList;
+
+        for (const auto arg : arguments) {
+          CAST_AS_LIST(list, arg);
+
+          for (const auto item : list->items) {
+            newList.push_back(item);
+          }
+        }
+
+        newList.shrink_to_fit();
+
+        RTN_VALUE(
+            std::make_shared<ast::List>(ast::NodeType::List, callsite->toDummyToken(), newList)
+        );
+      }
+    )
 };

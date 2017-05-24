@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <vector>
 #include <memory>
 #include <map>
@@ -57,6 +58,12 @@ namespace mal {
         List(const NodeType type, const Token token, const std::vector<TypePtr> items): Type(type, token), items(items) {};
 
         void toStream(std::ostream &stream) const override;
+
+        std::vector<TypePtr> copyOfItems() {
+          std::vector<TypePtr> copy(items.size());
+          std::copy(items.begin(), items.end(), copy.begin());
+          return copy;
+        }
     };
 
     class Map : public Type {
