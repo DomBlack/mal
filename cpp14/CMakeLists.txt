@@ -46,3 +46,4 @@ add_executable(step4_if_fn_do ${SOURCE_FILES} ${LIBRARY_FILES} src/step4_if_fn_d
 add_executable(step5_tco ${SOURCE_FILES} ${LIBRARY_FILES} src/step5_tco.cpp)
 add_executable(step6_file ${SOURCE_FILES} ${LIBRARY_FILES} src/step6_file.cpp)
 add_executable(step7_quote ${SOURCE_FILES} ${LIBRARY_FILES} src/step7_quote.cpp)
+add_executable(step8_macros ${SOURCE_FILES} ${LIBRARY_FILES} src/step8_macros.cpp)

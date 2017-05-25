@@ -310,5 +310,63 @@ const std::unordered_map<std::string, internal::FuncLambda> runtime::ns = {
             std::make_shared<ast::List>(ast::NodeType::List, callsite->toDummyToken(), newList)
         );
       }
+    ),
+
+    NS_FUNC(
+      "nth",
+      {
+        ARG_COUNT(2);
+
+        ARG_CAST_TO_LIST(list, 1);
+        ARG_CAST(index, 2, Integer);
+
+        if (index->value < 0 || index->value >= list->items.size()) {
+          RTN_ERROR("Index out of bounds"); // FIXME change to "exception"
+        }
+
+        RTN_VALUE(list->items[index->value]);
+      }
+    ),
+
+    NS_FUNC(
+      "first",
+      {
+        ARG_COUNT(1);
+
+        if (arguments[0]->type == ast::NodeType::Nil) {
+          RTN_NIL();
+        }
+
+        ARG_CAST_TO_LIST(list, 1);
+
+        if (list->items.empty()) {
+          RTN_NIL();
+        } else {
+          RTN_VALUE(list->items.front());
+        }
+      }
+    ),
+
+    NS_FUNC(
+      "rest",
+      {
+        ARG_COUNT(1);
+
+        if (arguments[0]->type == ast::NodeType::Nil) {
+          std::vector<ast::TypePtr> newList = {};
+          RTN_VALUE(std::make_shared<ast::List>(ast::NodeType::List, callsite->toDummyToken(), newList));
+        }
+
+        ARG_CAST_TO_LIST(list, 1);
+
+        if (list->items.empty()) {
+          std::vector<ast::TypePtr> newList = {};
+          RTN_VALUE(std::make_shared<ast::List>(ast::NodeType::List, callsite->toDummyToken(), newList));
+        } else {
+          const auto newList = std::vector<ast::TypePtr>(list->items.begin() + 1, list->items.end());
+
+          RTN_VALUE(std::make_shared<ast::List>(ast::NodeType::List, callsite->toDummyToken(), newList));
+        }
+      }
     )
 };
